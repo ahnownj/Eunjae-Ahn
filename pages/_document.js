@@ -30,7 +30,9 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <link rel="icon" href="/Artboard 1.svg" type="image/svg+xml" />
+        </Head>
         <body>
           <Main />
           <NextScript />

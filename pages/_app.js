@@ -1,20 +1,14 @@
 import "@/styles/globals.css";
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
-import CustomCursor from '@/components/Cursor';
+// import CustomCursor from '@/components/layout/Cursor';
+import { useEffect } from 'react';
 
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(0deg, rgb(114, 136, 95) 0%, rgb(255, 239, 211) 100%);
-    color: #fff;
     font-family: 'Open Sans', sans-serif;
     min-height: 100vh;
-  }
-
-  /* Next.js 기본 버튼 스타일 제거 */
-  .nextjs-toast-errors-parent {
-    display: none;
   }
 `;
 
@@ -25,10 +19,30 @@ const theme = {
 };
 
 export default function App({ Component, pageProps }) {
+  useEffect(() => {
+    let scrollTimer;
+    
+    const handleScroll = () => {
+      document.body.style.setProperty('--scrollbar-opacity', '1');
+      
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        document.body.style.setProperty('--scrollbar-opacity', '0');
+      }, 1500); // 스크롤 멈춘 후 1.5초 후에 숨김
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimer);
+    };
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <CustomCursor />
+      {/* <CustomCursor /> */}
       <Component {...pageProps} />
     </ThemeProvider>
   );

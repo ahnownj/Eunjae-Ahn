@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Header from './Header';
-import Footer from './Footer';
 
 const LayoutContainer = styled.div`
   min-height: 100vh;
@@ -17,7 +16,6 @@ const Layout = ({ children }) => {
     <LayoutContainer>
       <Header />
       <Main>{children}</Main>
-      <Footer />
     </LayoutContainer>
   );
 };

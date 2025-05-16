@@ -1,42 +1,41 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
   overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(180deg, #000000 0%, #0b0a1c 10%, #91d3ffb3 50%, #fff9cbba 90%, #ffffff 100%);
+  min-height: 100vh;
 }
 
 * {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* 기본 스크롤바 설정 */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* 스크롤바 트랙(배경) 완전 투명 */
+::-webkit-scrollbar-track {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* 스크롤바 핸들(막대) 네모, hover 효과 최소화 */
+::-webkit-scrollbar-thumb {
+  background: yellow;
+  border-radius: 0;
+  transition: background 0.2s;
+}
+
+/* hover 시 변화 최소화 (색상만 살짝 진하게 예시) */
+::-webkit-scrollbar-thumb:hover {
+  background: #ffd600;
+}
+
+/* 파이어폭스 대응 */
+html {
+  scrollbar-color: yellow transparent;
 }
